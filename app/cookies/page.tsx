@@ -4,8 +4,8 @@ export default function CookiesPolicy() {
   return (
     <>
       <Head>
-        <title>Cookies Policy - groovex</title>
-        <meta name="description" content="Learn how groovex uses cookies to enhance your browsing experience." />
+        <title>Cookies Policy - {process.env.NEXT_PUBLIC_APP_NAME}</title>
+        <meta name="description" content="Learn how thenorthside uses cookies to enhance your browsing experience." />
       </Head>
       <div className="container mx-auto p-6">
         <h1 className="text-3xl font-bold mb-4">Cookies Policy</h1>
@@ -21,15 +21,15 @@ export default function CookiesPolicy() {
         <h3 className="text-xl font-semibold mt-4">Definitions</h3>
         <ul className="list-disc ml-6">
           <li>
-            <strong>Company:</strong> Refers to groovex ("the Company", "We", "Us", or "Our").
+            <strong>Company:</strong> Refers to thenorthside ("the Company", "We", "Us", or "Our").
           </li>
           <li>
             <strong>Cookies:</strong> Small files placed on Your device, containing browsing history details among other
             uses.
           </li>
           <li>
-            <strong>Website:</strong> Refers to groovex, accessible from
-            <a href="https://groovex.co.in" target="_blank" rel="noopener noreferrer" className="text-blue-500"> groovex.co.in</a>.
+            <strong>Website:</strong> Refers to thenorthside, accessible from
+            <a href="https://thenorthside.com" target="_blank" rel="noopener noreferrer" className="text-blue-500"> thenorthside.com</a>.
           </li>
           <li>
             <strong>You:</strong> The individual or legal entity accessing or using the Website.
@@ -71,12 +71,12 @@ export default function CookiesPolicy() {
         <p>
           If you have any questions about this Cookies Policy, contact us at:
           <a
-            href="https://groovex.co.in/contact"
+            href="https://thenorthside.com/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500"
           >
-            groovex.co.in/contact
+            thenorthside.com/contact
           </a>
           .
         </p>

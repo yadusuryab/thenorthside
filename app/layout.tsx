@@ -142,8 +142,8 @@ export const jsonLdProducts = {
       "position": 1,
       "name": "Men's Watches",
       "description": "Explore our collection of stylish and durable men's watches. Perfect for every occasion.",
-      "url": "https://groovex.co.in/mens-watches",
-      "image": "https://groovex.co.in/images/mens-watches.jpg",
+      "url": "https://thenorthside.co.in/mens-watches",
+      "image": "https://thenorthside.co.in/images/mens-watches.jpg",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -151,7 +151,7 @@ export const jsonLdProducts = {
         "availability": "https://schema.org/InStock",
         "seller": {
           "@type": "Organization",
-          "name": "groovex"
+          "name": "thenorthside"
         }
       }
     },
@@ -160,8 +160,8 @@ export const jsonLdProducts = {
       "position": 2,
       "name": "Ladies' Watches",
       "description": "Discover elegant and trendy ladies' watches to complement your style.",
-      "url": "https://groovex.co.in/ladies-watches",
-      "image": "https://groovex.co.in/images/ladies-watches.jpg",
+      "url": "https://thenorthside.co.in/ladies-watches",
+      "image": "https://thenorthside.co.in/images/ladies-watches.jpg",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -169,7 +169,7 @@ export const jsonLdProducts = {
         "availability": "https://schema.org/InStock",
         "seller": {
           "@type": "Organization",
-          "name": "groovex"
+          "name": "thenorthside"
         }
       }
     },
@@ -178,8 +178,8 @@ export const jsonLdProducts = {
       "position": 3,
       "name": "Sunglasses",
       "description": "Shop the latest collection of sunglasses for men and women. UV protection and stylish designs.",
-      "url": "https://groovex.co.in/sunglasses",
-      "image": "https://groovex.co.in/images/sunglasses.jpg",
+      "url": "https://thenorthside.co.in/sunglasses",
+      "image": "https://thenorthside.co.in/images/sunglasses.jpg",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -187,7 +187,7 @@ export const jsonLdProducts = {
         "availability": "https://schema.org/InStock",
         "seller": {
           "@type": "Organization",
-          "name": "groovex"
+          "name": "thenorthside"
         }
       }
     },
@@ -196,8 +196,8 @@ export const jsonLdProducts = {
       "position": 4,
       "name": "Gadgets",
       "description": "Find the latest gadgets, including smartwatches, earphones, and more.",
-      "url": "https://groovex.co.in/gadgets",
-      "image": "https://groovex.co.in/images/gadgets.jpg",
+      "url": "https://thenorthside.co.in/gadgets",
+      "image": "https://thenorthside.co.in/images/gadgets.jpg",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -205,7 +205,7 @@ export const jsonLdProducts = {
         "availability": "https://schema.org/InStock",
         "seller": {
           "@type": "Organization",
-          "name": "groovex"
+          "name": "thenorthside"
         }
       }
     }
