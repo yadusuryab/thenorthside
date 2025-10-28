@@ -56,35 +56,11 @@ export default function AboutUsPage() {
 
   const milestones = [
     {
-      year: "2018",
+      year: "2024",
       title: "The Beginning",
       description: "THE NORTH SIDE was born in Kerala with a small collection of premium t-shirts and casual wear."
     },
-    {
-      year: "2019",
-      title: "First Milestone",
-      description: "Reached 1,000 customers and expanded our product line to include complete urban wear collections."
-    },
-    {
-      year: "2020",
-      title: "Digital Expansion",
-      description: "Launched nationwide shipping and established our online presence during the pandemic."
-    },
-    {
-      year: "2021",
-      title: "Growth Phase",
-      description: "Introduced sustainable collections and partnered with ethical manufacturing units."
-    },
-    {
-      year: "2022",
-      title: "Community Building",
-      description: "Built a community of 10,000+ fashion enthusiasts and expanded our design team."
-    },
-    {
-      year: "2023",
-      title: "Innovation Era",
-      description: "Launched tech-enabled sizing solutions and AI-powered style recommendations for customers."
-    }
+    
   ];
 
   const sustainability = [
@@ -130,7 +106,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {companyStats.map((stat, index) => (
@@ -144,7 +120,7 @@ export default function AboutUsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Story Tabs Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -159,7 +135,7 @@ export default function AboutUsPage() {
               {[
                 { id: 'mission', label: 'Mission & Vision' },
                 { id: 'journey', label: 'Our Journey' },
-                { id: 'team', label: 'Our Team' }
+              
               ].map((tab) => (
                 <button
                   key={tab.id}

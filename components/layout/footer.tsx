@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Instagram } from "lucide-react";
 import { Button } from "../ui/button";
 import { getAllCategories } from "@/lib/vehicleQueries";
+import Brand from "../brand/brand";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -75,20 +76,15 @@ function Footer() {
         <div className="marquee-container">
           <div className="marquee-content animate-marquee whitespace-nowrap">
             <span className="font-montserrat font-bold text-sm uppercase tracking-widest mx-8">
-              #WEARENORTHSIDE
+              LATEST STREETWEAR COLLECTIONS
             </span>
             <span className="font-montserrat font-bold text-sm uppercase tracking-widest mx-8">
-              #WEARENORTHSIDE
+            LATEST STREETWEAR COLLECTIONS
             </span>
             <span className="font-montserrat font-bold text-sm uppercase tracking-widest mx-8">
-              #WEARENORTHSIDE
+            LATEST STREETWEAR COLLECTIONS
             </span>
-            <span className="font-montserrat font-bold text-sm uppercase tracking-widest mx-8">
-              #WEARENORTHSIDE
-            </span>
-            <span className="font-montserrat font-bold text-sm uppercase tracking-widest mx-8">
-              #WEARENORTHSIDE
-            </span>
+           
           </div>
         </div>
       </div>
@@ -97,9 +93,10 @@ function Footer() {
       <div className="border-b border-gray-200">
         <div className="container mx-auto px-4 py-12 text-center">
           <Link href="/">
-            <h2 className="font-playfair text-primary italic text-4xl md:text-5xl font-bold tracking-wide hover:opacity-80 transition-opacity">
+            {/* <h2 className="font-playfair text-primary italic text-4xl md:text-5xl font-bold tracking-wide hover:opacity-80 transition-opacity">
               THE NORTH SIDE
-            </h2>
+            </h2> */}
+            <Brand cal={true}/>
           </Link>
         </div>
       </div>

@@ -16,7 +16,7 @@ const Header = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
-  const topTexts = ["NORTHSIDE", "#WEARENORTHSIDE", "NEW COLLECTIONS"];
+  const topTexts = ["NORTHSIDE", "#WEARENORTHSIDE", "LATEST COLLECTIONS"];
 
   // Handle mobile detection
   useEffect(() => {
