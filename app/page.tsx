@@ -1,4 +1,3 @@
-import CategoryGrid from "@/components/categories/category-grid";
 import ProductHomeGrid from "@/components/product/product-home-grid";
 import Hero from "@/components/sections/hero";
 
