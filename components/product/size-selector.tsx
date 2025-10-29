@@ -7,21 +7,40 @@ interface SizeSelectorProps {
   sizes: string[];
   selectedSize: string | null;
   onSizeSelect: (size: string) => void;
+  sizeChartData?: {
+    title?: string;
+    measurements?: Array<{
+      size: string;
+      chest?: string;
+      length?: string;
+    }>;
+  };
 }
 
-const SizeSelector = ({ sizes, selectedSize, onSizeSelect }: SizeSelectorProps) => {
+const SizeSelector = ({ sizes, selectedSize, onSizeSelect, sizeChartData }: SizeSelectorProps) => {
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
 
   if (!sizes || sizes.length === 0) {
     return null;
   }
 
-  // Updated size chart data with new measurements
-  const sizeChart = [
+  // Default size chart data as fallback
+  const defaultSizeChart = [
     { size: "S", chest: "21", length: "27" },
     { size: "M", chest: "22", length: "28" },
     { size: "L", chest: "23", length: "29" },
   ];
+
+  // Use Sanity size chart data if available, otherwise use default
+  const sizeChart = sizeChartData?.measurements?.length 
+    ? sizeChartData.measurements.map(measurement => ({
+        size: measurement.size,
+        chest: measurement.chest || "N/A",
+        length: measurement.length || "N/A"
+      }))
+    : defaultSizeChart;
+
+  const sizeGuideTitle = sizeChartData?.title || "Size Guide";
 
   return (
     <>
@@ -70,7 +89,7 @@ const SizeSelector = ({ sizes, selectedSize, onSizeSelect }: SizeSelectorProps) 
             <div className="p-6">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold">Size Guide</h2>
+                <h2 className="text-xl font-semibold">{sizeGuideTitle}</h2>
                 <button 
                   onClick={() => setIsSizeGuideOpen(false)}
                   className="text-2xl hover:text-gray-600 transition-colors"
@@ -116,8 +135,8 @@ const SizeSelector = ({ sizes, selectedSize, onSizeSelect }: SizeSelectorProps) 
               {/* Note */}
               <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
                 <p className="text-sm text-yellow-800">
-                  <strong>Note:</strong> All measurements are in inches. Sizes may vary slightly between different styles. 
-                  For a relaxed fit, we recommend choosing one size larger.
+                  <strong>Note:</strong> Sizes can vary from 2-3 centimeters because they are measured by hand. 
+                  The size matched on a label can differ from the one you have ordered.
                 </p>
               </div>
 

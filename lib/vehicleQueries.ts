@@ -21,10 +21,12 @@ export async function getDressesPaginated(
     length,
     neckline,
     sleeveType,
+    sleeveLength,
     images[]{asset->{url}},
     price,
     offerPrice,
     description,
+    sizeChart,
     soldOut,
     featured,
     occasion
@@ -62,6 +64,7 @@ export const getDressById = async (id: string): Promise<any | undefined> => {
     length,
     neckline,
     sleeveType,
+    sleeveLength,
     images[] {
       asset -> {
         url
@@ -70,6 +73,7 @@ export const getDressById = async (id: string): Promise<any | undefined> => {
     price,
     offerPrice,
     description,
+    sizeChart,
     soldOut,
     featured,
     occasion
@@ -109,6 +113,7 @@ export const searchDresses = async (keyword: string): Promise<any[] | undefined>
     length,
     neckline,
     sleeveType,
+    sleeveLength,
     images[] {
       asset -> {
         url
@@ -117,6 +122,7 @@ export const searchDresses = async (keyword: string): Promise<any[] | undefined>
     price,
     offerPrice,
     description,
+    sizeChart,
     soldOut,
     featured,
     occasion
@@ -142,6 +148,8 @@ export const getFeaturedDresses = async (): Promise<any[] | undefined> => {
     },
     fabric,
     dressType,
+    sleeveType,
+    sleeveLength,
     images[] {
       asset -> {
         url
@@ -150,6 +158,7 @@ export const getFeaturedDresses = async (): Promise<any[] | undefined> => {
     price,
     offerPrice,
     description,
+    sizeChart,
     soldOut,
     featured
   }`;
@@ -169,6 +178,7 @@ export const getFilteredDresses = async (filters: {
   dressType?: string;
   size?: string;
   occasion?: string;
+  sleeveLength?: string;
   minPrice?: number;
   maxPrice?: number;
 }): Promise<any[] | undefined> => {
@@ -188,6 +198,10 @@ export const getFilteredDresses = async (filters: {
   
   if (filters.occasion) {
     filterConditions.push('$occasion in occasion');
+  }
+  
+  if (filters.sleeveLength) {
+    filterConditions.push('sleeveLength == $sleeveLength');
   }
   
   if (filters.minPrice !== undefined) {
@@ -212,6 +226,7 @@ export const getFilteredDresses = async (filters: {
     length,
     neckline,
     sleeveType,
+    sleeveLength,
     images[] {
       asset -> {
         url
@@ -220,6 +235,7 @@ export const getFilteredDresses = async (filters: {
     price,
     offerPrice,
     description,
+    sizeChart,
     soldOut,
     featured,
     occasion
@@ -277,6 +293,7 @@ export const getProductsByCategory = async (categorySlug: string): Promise<any[]
     length,
     neckline,
     sleeveType,
+    sleeveLength,
     images[] {
       asset -> {
         url
@@ -285,6 +302,7 @@ export const getProductsByCategory = async (categorySlug: string): Promise<any[]
     price,
     offerPrice,
     description,
+    sizeChart,
     soldOut,
     featured,
     occasion
@@ -304,11 +322,13 @@ export const getUniqueFilterValues = async (): Promise<{
   dressTypes: string[];
   sizes: string[];
   occasions: string[];
+  sleeveLengths: string[];
 } | undefined> => {
   const query = `{
     "dressTypes": array::unique(*[_type == "product"].dressType),
     "sizes": array::unique(*[_type == "product"].sizes[]),
-    "occasions": array::unique(*[_type == "product"].occasion[])
+    "occasions": array::unique(*[_type == "product"].occasion[]),
+    "sleeveLengths": array::unique(*[_type == "product"].sleeveLength)
   }`;
 
   try {
@@ -331,6 +351,8 @@ export const getRelatedDresses = async (productId: string, categorySlug: string,
     },
     fabric,
     dressType,
+    sleeveType,
+    sleeveLength,
     images[] {
       asset -> {
         url
@@ -339,6 +361,7 @@ export const getRelatedDresses = async (productId: string, categorySlug: string,
     price,
     offerPrice,
     description,
+    sizeChart,
     soldOut
   }`;
 
@@ -351,9 +374,7 @@ export const getRelatedDresses = async (productId: string, categorySlug: string,
   }
 };
 
-// Add these to your existing queries file
-
-// Fetch active banners
+// Fetch active banners with video support
 export const getActiveBanners = async (): Promise<any[] | undefined> => {
   const query = `*[_type == "banner" && active == true && (
     !defined(startDate) || startDate <= now()
@@ -363,12 +384,25 @@ export const getActiveBanners = async (): Promise<any[] | undefined> => {
     _id,
     title,
     subtitle,
+    mediaType,
     image {
       asset -> {
         url,
         metadata {
           dimensions
         }
+      }
+    },
+    video {
+      asset -> {
+        url,
+        mimeType,
+        size
+      }
+    },
+    videoPoster {
+      asset -> {
+        url
       }
     },
     buttonText,
@@ -396,12 +430,25 @@ export const getAllBanners = async (): Promise<any[] | undefined> => {
     _id,
     title,
     subtitle,
+    mediaType,
     image {
       asset -> {
         url,
         metadata {
           dimensions
         }
+      }
+    },
+    video {
+      asset -> {
+        url,
+        mimeType,
+        size
+      }
+    },
+    videoPoster {
+      asset -> {
+        url
       }
     },
     buttonText,
@@ -419,6 +466,112 @@ export const getAllBanners = async (): Promise<any[] | undefined> => {
     return banners;
   } catch (error) {
     console.error("Error fetching all banners:", error);
+    return undefined;
+  }
+};
+
+// Fetch products with detailed size charts
+export const getProductsWithSizeCharts = async (): Promise<any[] | undefined> => {
+  const query = `*[_type == "product" && defined(sizeChart)] {
+    _id,
+    name,
+    sizes,
+    sizeChart {
+      title,
+      description,
+      measurements[] {
+        size,
+        bust,
+        waist,
+        hips,
+        length
+      }
+    },
+    images[] {
+      asset -> {
+        url
+      }
+    }
+  }`;
+
+  try {
+    const products = await client.fetch(query);
+    return products;
+  } catch (error) {
+    console.error("Error fetching products with size charts:", error);
+    return undefined;
+  }
+};
+
+// Fetch products by sleeve length
+export const getDressesBySleeveLength = async (sleeveLength: string): Promise<any[] | undefined> => {
+  const query = `*[_type == "product" && sleeveLength == $sleeveLength && soldOut != true] {
+    _id,
+    name,
+    category -> {
+      name,
+      slug
+    },
+    fabric,
+    dressType,
+    sleeveType,
+    sleeveLength,
+    images[] {
+      asset -> {
+        url
+      }
+    },
+    price,
+    offerPrice,
+    description,
+    sizeChart,
+    soldOut,
+    featured
+  } | order(_createdAt desc)`;
+
+  try {
+    const products = await client.fetch(query, { sleeveLength });
+    return products;
+  } catch (error) {
+    console.error("Error fetching products by sleeve length:", error);
+    return undefined;
+  }
+};
+
+// Fetch video banners only
+export const getVideoBanners = async (): Promise<any[] | undefined> => {
+  const query = `*[_type == "banner" && mediaType == "video" && active == true && (
+    !defined(startDate) || startDate <= now()
+  ) && (
+    !defined(endDate) || endDate >= now()
+  )] | order(order asc) {
+    _id,
+    title,
+    subtitle,
+    video {
+      asset -> {
+        url,
+        mimeType,
+        size
+      }
+    },
+    videoPoster {
+      asset -> {
+        url
+      }
+    },
+    buttonText,
+    buttonLink,
+    textPosition,
+    textColor,
+    order
+  }`;
+
+  try {
+    const banners = await client.fetch(query);
+    return banners;
+  } catch (error) {
+    console.error("Error fetching video banners:", error);
     return undefined;
   }
 };

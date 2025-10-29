@@ -28,11 +28,13 @@ export default function ProductDetailsClient({ product, params }: ProductDetails
     length,
     neckline,
     sleeveType,
+    sleeveLength,
     description,
     price,
     offerPrice,
     soldOut,
     occasion,
+    sizeChart, // Added sizeChart from product
   } = product;
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -56,6 +58,7 @@ export default function ProductDetailsClient({ product, params }: ProductDetails
         • Length: ${length || "Not specified"}
         • Neckline: ${neckline || "Not specified"}
         • Sleeve Type: ${sleeveType || "Not specified"}
+        ${sleeveLength ? `• Sleeve Length: ${sleeveLength}` : ""}
         ${careInstructions ? `• Care: ${careInstructions}` : ""}
         ${occasion?.length ? `• Occasion: ${occasion.join(", ")}` : ""}
       `.trim(),
@@ -105,11 +108,12 @@ export default function ProductDetailsClient({ product, params }: ProductDetails
         </div>
       </div>
 
-      {/* Size Selector - Updated to pass state up */}
+      {/* Size Selector - Pass sizeChart data */}
       <SizeSelector 
         sizes={sizes || []} 
         selectedSize={selectedSize}
         onSizeSelect={setSelectedSize}
+        sizeChartData={sizeChart} // Pass the sizeChart from Sanity
       />
 
       {/* Action Buttons */}
