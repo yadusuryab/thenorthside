@@ -16,14 +16,11 @@ const SizeSelector = ({ sizes, selectedSize, onSizeSelect }: SizeSelectorProps) 
     return null;
   }
 
-  // Indian clothing size chart data
-  const indianSizeChart = [
-    { size: "XS", chest: "32-34", waist: "28-30", hip: "34-36" },
-    { size: "S", chest: "34-36", waist: "30-32", hip: "36-38" },
-    { size: "M", chest: "36-38", waist: "32-34", hip: "38-40" },
-    { size: "L", chest: "38-40", waist: "34-36", hip: "40-42" },
-    { size: "XL", chest: "40-42", waist: "36-38", hip: "42-44" },
-    { size: "XXL", chest: "42-44", waist: "38-40", hip: "44-46" },
+  // Updated size chart data with new measurements
+  const sizeChart = [
+    { size: "S", chest: "21", length: "27" },
+    { size: "M", chest: "22", length: "28" },
+    { size: "L", chest: "23", length: "29" },
   ];
 
   return (
@@ -66,7 +63,7 @@ const SizeSelector = ({ sizes, selectedSize, onSizeSelect }: SizeSelectorProps) 
             <div className="p-6">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold">Indian Size Guide</h2>
+                <h2 className="text-xl font-semibold">Size Guide</h2>
                 <button 
                   onClick={() => setIsSizeGuideOpen(false)}
                   className="text-2xl hover:text-gray-600 transition-colors"
@@ -77,24 +74,22 @@ const SizeSelector = ({ sizes, selectedSize, onSizeSelect }: SizeSelectorProps) 
 
               {/* Size Chart */}
               <div className="mb-6">
-                <h3 className="text-lg font-medium mb-4">Clothing Size Chart (in inches)</h3>
+                <h3 className="text-lg font-medium mb-4">Size Chart (in inches)</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="bg-gray-100">
                         <th className="border border-gray-300 px-3 py-2 text-left font-medium">Size</th>
                         <th className="border border-gray-300 px-3 py-2 text-left font-medium">Chest</th>
-                        <th className="border border-gray-300 px-3 py-2 text-left font-medium">Waist</th>
-                        <th className="border border-gray-300 px-3 py-2 text-left font-medium">Hip</th>
+                        <th className="border border-gray-300 px-3 py-2 text-left font-medium">Length</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {indianSizeChart.map((row) => (
+                      {sizeChart.map((row) => (
                         <tr key={row.size}>
                           <td className="border border-gray-300 px-3 py-2 font-medium">{row.size}</td>
-                          <td className="border border-gray-300 px-3 py-2">{row.chest}</td>
-                          <td className="border border-gray-300 px-3 py-2">{row.waist}</td>
-                          <td className="border border-gray-300 px-3 py-2">{row.hip}</td>
+                          <td className="border border-gray-300 px-3 py-2">{row.chest}"</td>
+                          <td className="border border-gray-300 px-3 py-2">{row.length}"</td>
                         </tr>
                       ))}
                     </tbody>
@@ -107,16 +102,15 @@ const SizeSelector = ({ sizes, selectedSize, onSizeSelect }: SizeSelectorProps) 
                 <h3 className="text-lg font-medium mb-3">How to Measure</h3>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li>• <strong>Chest:</strong> Measure around the fullest part of your chest</li>
-                  <li>• <strong>Waist:</strong> Measure around your natural waistline</li>
-                  <li>• <strong>Hip:</strong> Measure around the fullest part of your hips</li>
+                  <li>• <strong>Length:</strong> Measure from the highest point of the shoulder to the desired length</li>
                 </ul>
               </div>
 
               {/* Note */}
               <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4">
                 <p className="text-sm text-yellow-800">
-                  <strong>Note:</strong> Sizes may vary slightly between different brands and styles. 
-                  For tailored fits, we recommend choosing one size larger.
+                  <strong>Note:</strong> All measurements are in inches. Sizes may vary slightly between different styles. 
+                  For a relaxed fit, we recommend choosing one size larger.
                 </p>
               </div>
 
