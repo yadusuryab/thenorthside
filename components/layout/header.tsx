@@ -219,7 +219,7 @@ const Header = () => {
                   HOME
                 </Link>
                 <Link 
-                  href="/terms" 
+                  href="/terms-conditions" 
                   className="relative transition-all duration-500 ease-out hover:opacity-80 
                              after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-current 
                              after:transition-all after:duration-500 hover:after:w-full"
@@ -334,7 +334,7 @@ const Header = () => {
                 { href: "/collections", label: "COLLECTIONS" },
                 { href: "/products", label: "ALL PRODUCTS" },
                 { href: "/about", label: "ABOUT" },
-                { href: "/terms", label: "TERMS" },
+                { href: "/terms-conditions", label: "TERMS" },
                 { href: "/contact", label: "CONTACT" },
               ].map((item) => (
                 <li key={item.href}>
