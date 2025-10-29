@@ -350,3 +350,75 @@ export const getRelatedDresses = async (productId: string, categorySlug: string,
     return undefined;
   }
 };
+
+// Add these to your existing queries file
+
+// Fetch active banners
+export const getActiveBanners = async (): Promise<any[] | undefined> => {
+  const query = `*[_type == "banner" && active == true && (
+    !defined(startDate) || startDate <= now()
+  ) && (
+    !defined(endDate) || endDate >= now()
+  )] | order(order asc) {
+    _id,
+    title,
+    subtitle,
+    image {
+      asset -> {
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    },
+    buttonText,
+    buttonLink,
+    textPosition,
+    textColor,
+    active,
+    order,
+    startDate,
+    endDate
+  }`;
+
+  try {
+    const banners = await client.fetch(query);
+    return banners;
+  } catch (error) {
+    console.error("Error fetching banners:", error);
+    return undefined;
+  }
+};
+
+// Fetch all banners (for admin purposes)
+export const getAllBanners = async (): Promise<any[] | undefined> => {
+  const query = `*[_type == "banner"] | order(order asc) {
+    _id,
+    title,
+    subtitle,
+    image {
+      asset -> {
+        url,
+        metadata {
+          dimensions
+        }
+      }
+    },
+    buttonText,
+    buttonLink,
+    textPosition,
+    textColor,
+    active,
+    order,
+    startDate,
+    endDate
+  }`;
+
+  try {
+    const banners = await client.fetch(query);
+    return banners;
+  } catch (error) {
+    console.error("Error fetching all banners:", error);
+    return undefined;
+  }
+};

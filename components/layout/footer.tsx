@@ -47,9 +47,9 @@ function Footer() {
   const footerLinks = {
     help: [
       { label: "CONTACT US", href: "/contact" },
-      { label: "SHIPPING INFO", href: "/shipping" },
-      { label: "RETURNS", href: "/returns" },
-      { label: "SIZE GUIDE", href: "/size-guide" }
+      // { label: "SHIPPING INFO", href: "/shipping" },
+      // { label: "RETURNS", href: "/returns" },
+      // { label: "SIZE GUIDE", href: "/size-guide" }
     ],
     company: [
       { label: "ABOUT US", href: "/about" }

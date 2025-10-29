@@ -23,11 +23,7 @@ export default function AboutUsPage() {
       title: "Our Vision",
       description: "To become India's most loved fashion brand, inspiring confidence and self-expression through thoughtfully designed apparel."
     },
-    {
-      icon: "❤️",
-      title: "Our Philosophy",
-      description: "We believe fashion should be authentic, sustainable, and empowering. Every stitch tells a story of craftsmanship and passion."
-    }
+  
   ];
 
   const teamMembers = [
@@ -298,7 +294,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Sustainability Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-green-50">
+   {/*    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-green-50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
             Our Commitment to Sustainability
@@ -308,7 +304,7 @@ export default function AboutUsPage() {
             to sustainable practices that protect our planet and empower our communities.
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {sustainability.map((item, index) => (
               <div key={index} className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-shadow">
                 <div className="text-3xl mb-4">{item.icon}</div>
@@ -321,8 +317,8 @@ export default function AboutUsPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </div> 
+      </section>*/}
 
       {/* Community Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
