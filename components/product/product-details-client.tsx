@@ -115,7 +115,7 @@ export default function ProductDetailsClient({ product, params }: ProductDetails
       {/* Action Buttons */}
       <div className="space-y-3">
         <Link
-          href={`https://wa.me/${site.phone}?text=${encodeURIComponent(message)}`}
+          href={`${process.env.NEXT_PUBLIC_WHATSAPP}?text=${encodeURIComponent(message)}`}
           target="_blank"
           className="block"
         >

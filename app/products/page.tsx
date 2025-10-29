@@ -485,7 +485,7 @@ function ProductList() {
           <Button variant="outline" onClick={clearAllFilters}>
             Clear filters
           </Button>
-          <Link href={`https://wa.me/${site.phone}?text=${encodeURIComponent("Hi, I'm looking for a dress but couldn't find it on your website.")}`} target="_blank">
+          <Link href={`${process.env.NEXT_PUBLIC_WHATSAPP}?text=${encodeURIComponent("Hi, I'm looking for a dress but couldn't find it on your website.")}`} target="_blank">
             <Button className="w-full bg-green-500 text-white hover:bg-green-600">
               Chat via WhatsApp for help
             </Button>

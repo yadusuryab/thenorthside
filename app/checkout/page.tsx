@@ -75,7 +75,7 @@ export default function CheckoutPage() {
 
     // Encode the message for WhatsApp URL
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${site.phone}?text=${encodedMessage}`;
+    const whatsappUrl = `${process.env.NEXT_PUBLIC_WHATSAPP}?text=${encodedMessage}`;
 
     // Redirect to WhatsApp
     window.location.href = whatsappUrl;
